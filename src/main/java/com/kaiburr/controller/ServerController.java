@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,14 +21,18 @@ import com.kaiburr.model.Server;
 import com.kaiburr.repository.ServerRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:8080")
 public class ServerController {
 	@Autowired
 	private ServerRepository serverRepository;
 
 	@GetMapping("/getAllServers")
 	public List<Server> getAllServers() {
-		return serverRepository.findAll();
+		
+		
+		 return (List<Server>) serverRepository.findAll();
+		
+		
 	}
 
 	@GetMapping("/server/{id}")
