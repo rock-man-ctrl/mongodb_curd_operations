@@ -28,7 +28,7 @@ public class ServerController {
 
 	@RequestMapping(value="/")
 	public String hello() {
-		return "welcome to kaiburr";
+		return "welcome to kaiburr...................";
 	}
 
 	@GetMapping("/getAllServers")
