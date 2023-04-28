@@ -26,13 +26,16 @@ public class ServerController {
 	@Autowired
 	private ServerRepository serverRepository;
 
+	@RequestMapping(value="/")
+	public String hello() {
+		return "welcome to kaiburr";
+	}
+
 	@GetMapping("/getAllServers")
 	public List<Server> getAllServers() {
-		
-		
-		 return (List<Server>) serverRepository.findAll();
-		
-		
+
+		return (List<Server>) serverRepository.findAll();
+
 	}
 
 	@GetMapping("/server/{id}")
@@ -50,7 +53,7 @@ public class ServerController {
 
 	@PutMapping("/updateServers/{id}")
 	public ResponseEntity<Server> updateServer(@PathVariable(value = "id") Long serverId,
-			 @RequestBody Server serverDetails) throws ResourceNotFoundException {
+			@RequestBody Server serverDetails) throws ResourceNotFoundException {
 		Server server = serverRepository.findById(serverId)
 				.orElseThrow(() -> new ResourceNotFoundException("Server not found for this id :: " + serverId));
 
@@ -63,7 +66,6 @@ public class ServerController {
 		return ResponseEntity.ok(updatedServer);
 	}
 
-	
 	@DeleteMapping("/deleteServers/{id}")
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long serverId)
 			throws ResourceNotFoundException {
