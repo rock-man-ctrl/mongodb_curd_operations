@@ -21,7 +21,7 @@ import com.kaiburr.model.Server;
 import com.kaiburr.repository.ServerRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+//@CrossOrigin(origins = "http://localhost:8080")
 public class ServerController {
 	@Autowired
 	private ServerRepository serverRepository;
